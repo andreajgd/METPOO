@@ -1,0 +1,5 @@
+/*C2*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C3*/SET SCHEMA PUBLIC
+create table Carrera (id varchar(255) not null, Facultad varchar(50) not null, Nombre varchar(50) not null, primary key (id))
+alter table Estudiante add column carrera varchar(255)
