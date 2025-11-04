@@ -1,4 +1,5 @@
 package com.tuempresa.facturacion_Practica.modelo;
+
 import java.math.*;
 
 import javax.persistence.*;
@@ -16,20 +17,23 @@ public class Producto {
     @Column(length=50) @Required
     String descripcion;
 
-    @ManyToOne( // La referencia se almacena como una relación en la base de datos
-            fetch=FetchType.LAZY, // La referencia se carga bajo demanda
-            optional=true) // La referencia puede estar sin valor
-    @DescriptionsList // Así la referencia se visualiza usando un combo
-    Categoria categoria; // Una referencia Java convencional
+    @ManyToOne(fetch=FetchType.LAZY)
+    @DescriptionsList
+    Autor autor;
 
-    @Money // La propiedad precio se usa para almacenar dinero
-    BigDecimal precio; // BigDecimal se suele usar para dinero
+    @ManyToOne(
+            fetch=FetchType.LAZY,
+            optional=true)
+    @DescriptionsList
+    Categoria categoria;
 
-    @Files // Una galería de fotos completa está disponible
-    @Column(length=32) // La cadena de 32 de longitud es para almacenar la clave de la galería
+    @Money
+    BigDecimal precio;
+
+    @Files
+    @Column(length=32)
     String fotos;
 
-    @TextArea // Esto es para un texto grande, se usará un área de texto o equivalente
+    @TextArea
     String observaciones;
-
 }

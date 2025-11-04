@@ -1,5 +1,7 @@
 package com.tuempresa.facturacion_Practica.modelo;
 
+import java.util.*;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 
@@ -9,16 +11,18 @@ import org.openxava.annotations.*;
 import lombok.*;
 
 @Entity @Getter @Setter
-public class Categoria {
+public class Autor {
 
-    @Id
-    @Hidden
-    @GeneratedValue(generator="system-uuid")
+    @Id @GeneratedValue(generator="system-uuid") @Hidden
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(length=32)
     String oid;
 
-    @Column(length=50)
-    String descripcion;
+    @Column(length=50) @Required
+    String nombre;
+
+    @OneToMany(mappedBy="autor")
+    @ListProperties("numero, descripcion, precio")
+    Collection<Producto> productos;
 
 }

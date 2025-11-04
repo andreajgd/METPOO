@@ -1,5 +1,4 @@
 package com.tuempresa.facturacion_Practica.modelo;
-
 import javax.persistence.*;
 
 import lombok.*;
